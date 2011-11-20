@@ -30,9 +30,8 @@ function strToDate(str){
 }
 
 exports.index = function(req, res){
-      var filterOptions = defaultFilterOptions();
+  var filterOptions = defaultFilterOptions();
   execFilter(filterOptions, function(err, data){
-    logger.info(data.updatedIssues);
     res.render('index', {
       filterOptions: filterOptions,
       data: data

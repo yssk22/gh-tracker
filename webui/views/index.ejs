@@ -1,12 +1,15 @@
+<% var keys = Object.keys(data).sort(); %>
 <ul data-tabs="tabs" class="tabs">
-  <% for(var key in data){ %>
+  <% for(var i in keys){ %>
+  <% var key = keys[i] %>
   <li>
     <a href="#<%= key.replace('/', '-') %>"><%= key %></a>
   </li>
   <% } %>
 </ul>
 <div class="tab-content" id="my-tab-content">
-  <% for(var key in data){ %>
+  <% for(var i in keys){ %>
+  <% var key = keys[i] %>
   <% var commits = data[key].commits %>
   <% var createdIssues = data[key].createdIssues %>
   <% var updatedIssues = data[key].updatedIssues %>
