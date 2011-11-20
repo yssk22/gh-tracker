@@ -3,11 +3,13 @@
 The batch implementation for Github Tracker.
 
 # Usage on CloudFoundry
-
+    
+    $ npm install
+    
     $ vmc push --no-start
     
     # comma seperated :user/:repo list for tracking targets.
-    $ vmc env-add {yourappname} GH_TRACKER_TARGETS="cloudfoundry/vcap, cloudfoundry/vcap-services"
+    $ vmc env-add {yourappname} GH_TRACKER_TARGETS="{user}/{repo}, ..."
     
     # Then confirm your tracker configuration
     $ curl http://{yourappname}.cloudfoundry.com/
