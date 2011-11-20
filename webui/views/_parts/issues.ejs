@@ -1,0 +1,13 @@
+<li>
+  <span class="datetime">
+    <a href="<%= issue.html_url %>"><%= formatTime(new Date(issue[dateField])) %></a>
+  </span>
+  <span class="title">
+    <%= issue.title %>
+  </span>
+  <span class="user">
+    <a href="https://github.com<%= issue.user %>">
+      <%= issue.user %>
+    </a>
+  </span>
+</li>

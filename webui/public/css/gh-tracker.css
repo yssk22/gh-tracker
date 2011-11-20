@@ -1,0 +1,18 @@
+div#topbar form .input {
+  margin-left: 20px;
+}
+div#topbar form .datepicker {
+  position: absolute;
+  margin-left: -250px;
+  /* for datepicker adjustment */
+
+}
+div#main {
+  margin-top: 50px;
+}
+div#main ul.commits li .committer:before {
+  content: '[';
+}
+div#main ul.commits li .committer:after {
+  content: ']';
+}

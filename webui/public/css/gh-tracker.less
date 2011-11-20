@@ -1,0 +1,24 @@
+div#topbar {
+    form {
+        .input {
+            margin-left: 20px;
+        }
+        .datepicker {
+            position: absolute;
+            margin-left: -250px; /* for datepicker adjustment */
+        }
+    }
+}
+div#main {
+    margin-top: 50px;
+    ul.commits {
+        li {
+            .committer:before {
+                content: '[';
+            }
+            .committer:after {
+                content: ']';
+            }
+        }
+    }
+}

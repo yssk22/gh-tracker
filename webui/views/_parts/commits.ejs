@@ -1,0 +1,13 @@
+<li>
+  <span class="datetime">
+    <a href="https://github.com<%= commit.url %>"><%= formatTime(new Date(commit.committed_date)) %></a>
+  </span>
+  <span class="message">
+    <%= commit.message %>
+  </span>
+  <span class="committer">
+    <a href="https://github.com<%= commit.committer.login %>">
+      <%= commit.committer.name %>
+    </a>
+  </span>
+</li>

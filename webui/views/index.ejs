@@ -1,0 +1,70 @@
+<ul data-tabs="tabs" class="tabs">
+  <% for(var key in data){ %>
+  <li>
+    <a href="#<%= key.replace('/', '-') %>"><%= key %></a>
+  </li>
+  <% } %>
+</ul>
+<div class="tab-content" id="my-tab-content">
+  <% for(var key in data){ %>
+  <% var commits = data[key].commits %>
+  <% var createdIssues = data[key].createdIssues %>
+  <% var updatedIssues = data[key].updatedIssues %>
+  <% var closedIssues = data[key].closedIssues %>
+  <div id="<%= key.replace('/', '-') %>" class="tab-pane">
+    <h2 ><%= key %></h2>
+    <h3>Closed Issues</h3>
+    <% if( closedIssues && closedIssues.length > 0 ){ %>
+    <ul class="issues">
+      <%- partial('_parts/issues', {
+          collection: closedIssues, as: 'issue', 
+          locals: { dateField: 'closed_at' }
+          }) %>
+    </ul>
+    <% }else { %>
+    <div class="alert-message info">
+      <p>No issues are closed in this term.</p>
+    </div>
+    <% } %>
+
+    <h3>Created Issues</h3>
+    <% if( createdIssues && createdIssues.length > 0 ){ %>
+    <ul class="issues">
+      <%- partial('_parts/issues', {
+          collection: createdIssues, as: 'issue',
+          locals: { dateField: 'created_at' }
+          }) %>
+    </ul>
+    <% }else { %>
+    <div class="alert-message info">
+      <p>No issues are created in this term.</p>
+    </div>
+    <% } %>
+
+    <h3>Updated Issues</h3>
+    <% if( updatedIssues && updatedIssues.length > 0 ){ %>
+    <ul class="issues">
+      <%- partial('_parts/issues', {
+          collection: updatedIssues, as: 'issue',
+          locals: { dateField: 'updated_at' }
+          }) %>
+    </ul>
+    <% }else { %>
+    <div class="alert-message info">
+      <p>No issues are updated in this term.</p>
+    </div>
+    <% } %>
+
+    <h3>Commits</h3>
+    <% if( commits && commits.length > 0 ){ %>
+    <ul class="commits">
+      <%- partial('_parts/commits', {collection: commits, as: 'commit'}) %>
+    </ul>
+    <% }else { %>
+    <div class="alert-message info">
+      <p>No commites are pushed in this term.</p>
+    </div>
+    <% } %>
+  </div>
+  <% } %>
+</div>

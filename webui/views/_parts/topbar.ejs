@@ -1,0 +1,21 @@
+<div style="z-index: 5;" class="topbar-wrapper">
+  <div id="topbar" data-dropdown="dropdown" class="topbar">
+    <div class="topbar-inner">
+      <div class="container">
+        <h3><a href="/">gh-tracker</a></h3>
+        <form action="/q" method="GET">
+          <div class="input">
+            <div class="inline-inputs">
+              <input name="from" data-datepicker="datepicker" class="small" type="text" 
+                     value="<%= formatDate(filterOptions.from) %>" />
+              to
+              <input name="to" data-datepicker="datepicker" class="small" type="text" 
+                     value="<%= formatDate(filterOptions.to) %>" />
+              <button class="btn" type="submit">Go</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div><!-- /topbar-inner -->
+  </div><!-- /topbar -->
+</div>
