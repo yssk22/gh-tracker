@@ -1,0 +1,11 @@
+{
+    "name": "gh-tracker-batch", 
+    "version": "0.0.1", 
+    "private": true, 
+    "dependencies": {
+        "express": "2.5.0",
+        "mongodb": "0.9.7-0",
+        "github" : "0.0.7",
+        "log4js" : "0.3.9"
+    }
+}
