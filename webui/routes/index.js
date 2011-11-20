@@ -34,7 +34,10 @@ exports.index = function(req, res){
   execFilter(filterOptions, function(err, data){
     res.render('index', {
       filterOptions: filterOptions,
-      data: data
+      data: data,
+      options: {
+        googleAnalytics: process.env.GOOGLE_ANALYTICS_CODE
+      }
     });
   });
 };
@@ -47,7 +50,10 @@ exports.q = function(req, res){
     execFilter(filterOptions, function(err, data){
       res.render('index', {
         filterOptions: filterOptions,
-        data: data
+        data: data,
+        options: {
+          googleAnalytics: process.env.GOOGLE_ANALYTICS_CODE
+        }
       });
     });
   }catch(e){
