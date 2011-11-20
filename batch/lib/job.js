@@ -123,6 +123,8 @@ Job.prototype.run = function(callback){
                 var issues = result.issues;
                 for(var i=0, len=issues.length; i<len; i++){
                   var issue = issues[i];
+                  // normalize
+                  normalizeDates(issue, ['created_at', 'updated_at', 'closed_at']);
                   issue._id = issue.html_url.substr(URL_PREFIX_LENGTH);
                 }
                 issues = ensureUniqueness(issues);
@@ -149,6 +151,7 @@ Job.prototype.run = function(callback){
                 var commit_ids = {};
                 for(var i=0, len=commits.length; i<len; i++){
                   var commit = result.commits[i];
+                  normalizeDates(commit, ['committed_date', 'authored_date']);
                   delete(commit.id);
                   commit._id = commit.url;
                 }
@@ -225,6 +228,21 @@ function ensureUniqueness(recordList){
       return true;
     }
   });
+}
+
+function normalizeDates(obj, fieldNames){
+  for(var i in fieldNames){
+    var fname = fieldNames[i];
+    if( obj[fname] ){
+      try{
+        obj[fname] = new Date(obj[fname]);
+      }catch(e){
+        logger.warning('Could not normalize date: %s of %j', fname, obj);
+        obj[fname] = null;
+      }
+    }
+  }
+  return obj;
 }
 
 
