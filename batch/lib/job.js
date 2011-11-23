@@ -73,17 +73,6 @@ Job.prototype.run = function(callback){
   }
 
   async.parallel({
-    allIssues: function(callback){
-      db.collection(self.collection.issues, function(err, collection){
-        if( err ){
-          callback(err);
-        }else{
-          collection.count(function(err, result){
-            callback(err, result == 0);
-          });
-        }
-      });
-    },
     commitsAfter: function(callback){
       // get the last commited_date
       db.collection(self.collection.commits, function(err, collection){
